@@ -7,7 +7,7 @@ import java.util.List;
 // Represents a collection of to-do lists.
 public class ToDoListCollection {
 
-    /*
+    /*  Has not been implemented yet. Not part of user stories.
 
     private List<ToDoList> collection;
 
