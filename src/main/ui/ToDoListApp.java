@@ -100,7 +100,7 @@ public class ToDoListApp {
 
         showEditMenu();
         String command = scanner.nextLine();
-        command.toLowerCase();
+        command = command.toLowerCase();
 
         while (!stop) {
             if (command.equals("name")) {
@@ -227,7 +227,7 @@ public class ToDoListApp {
         toDoList.clear();
     }
 
-    // EFFECTs: returns a valid task name from user input
+    // EFFECTS: returns a valid task name from user input
     private String returnValidTask() {
         String taskName = scanner.nextLine();
         while (toDoList.getTask(taskName) == null) {
