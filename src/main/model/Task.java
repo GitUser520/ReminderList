@@ -60,6 +60,7 @@ public class Task {
     // EFFECTS: if task is incomplete, displays the task as incomplete, with
     //                     due date (if applicable)
     //          if complete, display task as complete
+    @Override
     public String toString() {
         if ((!completionStatus) && dueDate != null) {
             return name + ": incomplete. Due: " + dueDate.toString();

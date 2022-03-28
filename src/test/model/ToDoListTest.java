@@ -22,6 +22,11 @@ class ToDoListTest {
     }
 
     @Test
+    public void testGetName() {
+        assertEquals("Test List", toDoList.getName());
+    }
+
+    @Test
     public void testGetTaskByNameNoTaskFound() {
         toDoList.addTask(task2);
         assertEquals(1, toDoList.size());

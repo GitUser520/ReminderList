@@ -33,6 +33,11 @@ public class ToDoList {
         return toDoList.get(index);
     }
 
+    // EFFECTS: returns the name of the to-do list
+    public String getName() {
+        return name;
+    }
+
     // EFFECTS: returns the size of the to-do list
     public int size() {
         return toDoList.size();
