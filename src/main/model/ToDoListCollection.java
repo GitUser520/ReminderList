@@ -4,7 +4,10 @@ import java.awt.image.TileObserver;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents a collection of to-do lists.
 public class ToDoListCollection {
+
+    /*
 
     private List<ToDoList> collection;
 
@@ -22,17 +25,16 @@ public class ToDoListCollection {
 
     // MODIFIES: this
     // EFFECTS: adds the to-do list to the collection
-    public void addToDoList(ToDoList toDoList) {
-
-    }
+    public void addToDoList(ToDoList toDoList) {}
 
     // MODIFIES: this
     // EFFECTS: removes the to-do list with given name from the collection
     public void removeToDoList(String name) {}
 
     // EFFECTS: displays all items in the collection
-    public String display() {
+    public String displayAll() {
         return "";
     }
 
+     */
 }

@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+// Represents a to-do list that has a name and a list of tasks.
 public class ToDoList {
 
     private String name;

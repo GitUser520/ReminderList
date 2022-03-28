@@ -1,5 +1,6 @@
 package model;
 
+// Represents a date with its year, month, and day
 public class Date {
 
     private int year;
@@ -37,14 +38,14 @@ public class Date {
         this.year = year;
     }
 
-    // REQUIRES: 0 <= month <= 12
+    // REQUIRES: 1 <= month <= 12
     // MODIFIES: this
     // EFFECTS: sets month as given month
     public void setMonth(int month) {
         this.month = month;
     }
 
-    // REQUIRES: 0 <= day <= 31
+    // REQUIRES: day must be a valid day in the month
     // MODIFIES: this
     // EFFECTS: sets day as given day
     public void setDay(int day) {

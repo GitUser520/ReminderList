@@ -1,10 +1,10 @@
 package model;
 
+// Represents a task with its name, completion status, and an optional due date.
 public class Task {
 
     private String name;
     private Boolean completionStatus;
-
     private Date dueDate;
 
     // EFFECTS: constructs a task with given name and incomplete status.
@@ -24,7 +24,6 @@ public class Task {
         return completionStatus;
     }
 
-    // REQUIRES: dueDate is not null
     // EFFECTS: returns the due date of the task
     public Date getDueDate() {
         return dueDate;
