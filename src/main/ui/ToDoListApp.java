@@ -17,7 +17,7 @@ public class ToDoListApp {
 
     // MODIFIES: this
     // EFFECTS: runs the to-do list application
-    public void runToDoList() {
+    private void runToDoList() {
         scanner = new Scanner(System.in);
         toDoList = new ToDoList("To-Do List");
         runStatus = true;
@@ -169,7 +169,7 @@ public class ToDoListApp {
     // EFFECTS: returns the max valid day in the month in the year
     private int maxDayInMonth(int year, int month) {
         if ((month == 1) || (month == 3) || (month == 5) || (month == 7)
-                || (month == 8) || (month == 10) || (month == 31)) {
+                || (month == 8) || (month == 10) || (month == 12)) {
             return 31;
         } else if ((month == 4) || (month == 6) || (month == 9) || (month == 11)) {
             return 30;
