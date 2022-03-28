@@ -55,7 +55,17 @@ public class TaskTest {
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
 
+        task.setName("Some Random Task");
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
         task.completeTask();
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
+        task.setName("Do laundry");
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
@@ -64,26 +74,14 @@ public class TaskTest {
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
-
-        task.setName("Go shopping");
-
-        assertFalse(task.equals(expectedTask));
-        assertFalse(expectedTask.equals(task));
     }
 
     @Test
-    public void testEqualsByDueDate() {
+    public void testEqualsByDifferentDueDate() {
         Task expectedTask = new Task ("Do laundry");
-
-        assertFalse(task.equals(expectedTask));
-        assertFalse(expectedTask.equals(task));
-
-        task.setName("Do laundry");
-
-        assertTrue(task.equals(expectedTask));
-        assertTrue(expectedTask.equals(task));
-
         expectedTask.setDueDate(new Date(2020,2,3));
+
+        task.setName("Not do laundry");
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
@@ -93,12 +91,48 @@ public class TaskTest {
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
 
+        task.completeTask();
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
+        task.setName("Do laundry");
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
+        expectedTask.completeTask();
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
         task.setDueDate(new Date(2020,2,3));
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
+    }
+
+    @Test
+    public void testEqualsBySameDueDate() {
+        Task expectedTask = new Task ("Do laundry");
+        expectedTask.setDueDate(new Date(2020,2,3));
+
+        task.setName("Not do laundry");
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
+        task.setDueDate(new Date(2020,2,3));
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
 
         task.completeTask();
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
+        task.setName("Do laundry");
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
