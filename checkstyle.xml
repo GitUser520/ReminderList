@@ -17,6 +17,8 @@
 
     <property name="severity" value="error"/>
 
+    <property name="localeLanguage" value="en"/>
+
     <property name="fileExtensions" value="java, properties, xml"/>
     <!-- Checks for whitespace                               -->
     <!-- See http://checkstyle.sf.net/config_whitespace.html -->

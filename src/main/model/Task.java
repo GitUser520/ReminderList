@@ -14,6 +14,28 @@ public class Task {
         dueDate = null;
     }
 
+    // EFFECTS: returns the name of this task
+    public String getName() {
+        return name;
+    }
+
+    // EFFECTS: returns the completion status of this task
+    public Boolean getCompletionStatus() {
+        return completionStatus;
+    }
+
+    // REQUIRES: dueDate is not null
+    // EFFECTS: returns the due date of the task
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: changes the task name to given name
+    public void editName(String name) {
+        this.name = name;
+    }
+
     // MODIFIES: this
     // EFFECTS: sets a due date with given date
     public void setDueDate(Date date) {
@@ -22,19 +44,30 @@ public class Task {
 
     // MODIFIES: this
     // EFFECTS: marks this task as complete
-    public void complete() {
+    public void completeTask() {
         completionStatus = true;
     }
 
-    // EFFECTS: if task is incomplete, displays the task as incomplete, with
-    //                     due date and reminder
-    //          if complete, display task as complete
-    public String toString() {
-        if (completionStatus) {
-            return name + ": incomplete. Due: " + dueDate.toString()
-                    + " Remind: ";
+    // EFFECTS: returns true if name, completion status, and due date are equal
+    public boolean equals(Task task) {
+        if ((dueDate != null) && (task.getDueDate() != null)) {
+            return (name.equals(task.getName())) && (completionStatus == task.getCompletionStatus())
+                    && (dueDate.equals(task.getDueDate()));
         }
-        return name + ": complete.";
+        return (name.equals(task.getName())) && (completionStatus == task.getCompletionStatus())
+                && dueDate == task.getDueDate();
     }
 
+    // EFFECTS: if task is incomplete, displays the task as incomplete, with
+    //                     due date (if applicable)
+    //          if complete, display task as complete
+    public String toString() {
+        if ((!completionStatus) && dueDate != null) {
+            return name + ": incomplete. Due: " + dueDate.toString();
+        } else if ((!completionStatus) && dueDate == null) {
+            return name + ": incomplete.";
+        } else {
+            return name + ": complete.";
+        }
+    }
 }
