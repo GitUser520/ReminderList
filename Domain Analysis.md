@@ -7,9 +7,10 @@
 - add .toJson() methods to Date, Task, ToDoList, and ToDoListCollection [done]
 - complete ToDoListCollection [done]
 - complete JsonReader [done]
-- update ToDoListApp to reflect changes 
+- update ToDoListApp to reflect changes [done]
     - updated ToDoListApp framework [done]
-    - added save/load features [bugged, trying to fix]
+    - added save/load features [fixed, done]
+- add tests for code coverage
     
 ## Models
 
