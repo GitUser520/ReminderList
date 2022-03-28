@@ -92,6 +92,16 @@ public class TaskTest {
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
+
+        task.completeTask();
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
+        expectedTask.completeTask();
+
+        assertTrue(task.equals(expectedTask));
+        assertTrue(expectedTask.equals(task));
     }
 
     @Test
