@@ -39,6 +39,11 @@ public class ToDoListCollection {
         return collection;
     }
 
+    // EFFECTS: returns the index of the to-do list object
+    public int getIndex(ToDoList toDoList) {
+        return collection.indexOf(toDoList);
+    }
+
     // EFFECTS: returns the size of the collection
     public int size() {
         return collection.size();

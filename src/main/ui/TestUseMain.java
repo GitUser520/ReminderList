@@ -4,7 +4,10 @@ import model.Date;
 import model.Task;
 import model.ToDoList;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,24 +18,80 @@ public class TestUseMain extends Frame implements ActionListener {
     private JTextField textField;
     private JLabel label;
     private JButton button;
+    private List<String> list;
+    private JComboBox<String> comboBox;
 
     public TestUseMain() {
         JFrame frame = new JFrame("Example");
         textField = new JTextField();
-        textField.setBounds(50, 50, 150, 20);
-        textField.setText("Welcome to JavaPoint");
+        textField.setBounds(50, 50, 150, 30);
+        textField.setText("Hello world!!!!!!");
         textField.addActionListener(this);
-        button = new JButton("Click here");
-        button.setBounds(50, 100, 95, 30);
+        button = new JButton("Button");
+        button.setBounds(50, 100, 100, 30);
         button.addActionListener(this);
-        label = new JLabel("Hi!");
-        label.setBounds(80, 200, 50, 30);
+        label = new JLabel("Hello world!");
+        label.setBounds(100, 200, 50, 30);
 
+        list = new ArrayList<>();
+        list.add("a");
+        list.add("b");
+        list.add("c");
+
+        JList jlist = new JList(new AbstractListModel() {
+            @Override
+            public int getSize() {
+                return list.size();
+            }
+
+            @Override
+            public Object getElementAt(int index) {
+                return list.get(index);
+            }
+        });
+        /*
+        // Wow, so this is how it's done. :DDDDDD 
+        comboBox = new JComboBox<>(new ComboBoxModel<String>() {
+            private List<ListDataListener> observers = new ArrayList<>();
+            private int index = 0;
+
+            @Override
+            public void setSelectedItem(Object anItem) {
+                index = list.indexOf(anItem);
+            }
+
+            @Override
+            public Object getSelectedItem() {
+                return list.get(index);
+            }
+
+            @Override
+            public int getSize() {
+                return list.size();
+            }
+
+            @Override
+            public String getElementAt(int index) {
+                return list.get(index);
+            }
+
+            @Override
+            public void addListDataListener(ListDataListener l) {
+                observers.add(l);
+            }
+
+            @Override
+            public void removeListDataListener(ListDataListener l) {
+                observers.remove(l);
+            }
+        });
+        comboBox.setBounds(200, 200, 100, 30);*/
 
         frame.add(textField);
         frame.add(button);
         frame.add(label);
-        frame.setSize(400,400);
+        frame.add(comboBox);
+        frame.setSize(400, 400);
         frame.setLayout(null);
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,6 +109,11 @@ public class TestUseMain extends Frame implements ActionListener {
             textField.setText("Reset text");
             label.setText("Label :D");
         }
+    }
+
+    // Code segments which I'd love to save :D
+    private void codeSegments() {
+
     }
 }
 

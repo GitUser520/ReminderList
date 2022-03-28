@@ -9,6 +9,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
@@ -298,6 +299,10 @@ public class ToDoListGUI implements ActionListener, ListSelectionListener {
             case "rename to-do list":
                 renameToDoList();
                 break;
+            case JFileChooser.APPROVE_SELECTION:
+                break;
+            case JFileChooser.CANCEL_SELECTION:
+                break;
             default:
                 JOptionPane.showMessageDialog(frame, "Action Error.");
         }
@@ -453,6 +458,8 @@ public class ToDoListGUI implements ActionListener, ListSelectionListener {
     private void addTask() {
         Task newTask = new Task(taskAdder.getText());
         currentToDoList.addTask(newTask);
+
+        taskAdder.setText("");
         currentJList.updateUI();
     }
 
