@@ -92,6 +92,25 @@ public class ToDoListCollectionTest {
     }
 
     @Test
+    public void testRemoveToDoListInList() {
+        collection.addToDoList(list1);
+        collection.addToDoList(list2);
+        assertEquals(2, collection.size());
+
+        collection.removeToDoList(list1);
+        assertEquals(1, collection.size());
+        assertEquals(list2, collection.getToDoList(0));
+    }
+
+    @Test
+    public void testRemoveToDoListNotInList() {
+       collection.addToDoList(list1);
+       collection.removeToDoList(list2);
+       assertEquals(1, collection.size());
+       assertEquals(list1, collection.getToDoList(0));
+    }
+
+    @Test
     public void testRemoveToDoListByNameDoesNotContainList() {
         collection.addToDoList(list1);
         collection.addToDoList(list2);

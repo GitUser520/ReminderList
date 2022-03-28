@@ -270,6 +270,12 @@ class ToDoListTest {
     }
 
     @Test
+    public void testToString() {
+        toDoList.setName("List of to-dos");
+        assertEquals("List of to-dos", toDoList.toString());
+    }
+
+    @Test
     public void testToJsonEmpty() {
         assertEquals(0, toDoList.size());
         JSONObject jsonList = toDoList.toJson();
