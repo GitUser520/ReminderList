@@ -1,5 +1,16 @@
 # Domain Analysis
 
+## To Do
+
+### Early March - Phase 2:
+- complete JsonWriter in persistence package [done]
+- add .toJson() methods to Date, Task, ToDoList, and ToDoListCollection [done]
+- complete ToDoListCollection [done]
+- complete JsonReader [done]
+- update ToDoListApp to reflect changes 
+    - updated ToDoListApp framework [done]
+    - added save/load features [bugged, trying to fix]
+    
 ## Models
 
 We require at least three models: Task, ToDoList, and ToDoListCollection.

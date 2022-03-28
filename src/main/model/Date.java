@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a date with its year, month, and day
 public class Date {
 
@@ -72,4 +74,12 @@ public class Date {
         return year + "/" + month + "/" + day;
     }
 
+    // EFFECTS: returns JSON object of date with year, month, day
+    public JSONObject toJson() {
+        JSONObject date = new JSONObject();
+        date.put("year", year);
+        date.put("month", month);
+        date.put("day", day);
+        return date;
+    }
 }

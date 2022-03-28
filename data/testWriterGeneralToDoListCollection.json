@@ -1,0 +1,30 @@
+{"collection": [
+    {
+        "name": "shopping",
+        "tasks": [
+            {
+                "completion status": true,
+                "due date": null,
+                "task name": "buy onions"
+            },
+            {
+                "completion status": false,
+                "due date": null,
+                "task name": "buy potatoes"
+            },
+            {
+                "completion status": false,
+                "due date": {
+                    "month": 3,
+                    "year": 2021,
+                    "day": 7
+                },
+                "task name": "buy milk"
+            }
+        ]
+    },
+    {
+        "name": "chores",
+        "tasks": []
+    }
+]}

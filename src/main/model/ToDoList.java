@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +46,16 @@ public class ToDoList {
         return toDoList.size();
     }
 
+    // EFFECTS: returns true if to-do list contains task, false otherwise
+    public boolean contains(Task task) {
+        for (Task other : toDoList) {
+            if (other.equals(task)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // MODIFIES: this
     // EFFECTS: adds the task to the beginning of to-do list
     public void addTask(Task task) {
@@ -75,14 +88,27 @@ public class ToDoList {
         toDoList.clear();
     }
 
-    // EFFECTS: displays all of the tasks in the to-do list in current order
+    // EFFECTS: displays to-do list and all tasks in the list in current order
     public String display() {
-        String result = "";
+        String result = name + "\n";
         for (Task task: toDoList) {
-            result = result + task.toString() + "\n";
+            result = result + "\t" + task.toString() + "\n";
         }
         return result;
     }
+
+    // EFFECTS: returns a JSON object with to-do list name and tasks
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+        JSONArray array = new JSONArray();
+        for (Task task : toDoList) {
+            array.put(task.toJson());
+        }
+        object.put("name", name);
+        object.put("tasks", array);
+        return object;
+    }
+
 
     /* Not yet implemented.
 

@@ -1,6 +1,8 @@
 package model;
 
-import java.awt.image.TileObserver;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,22 @@ public class ToDoListCollection {
         return collection.get(index);
     }
 
+    // EFFECTS: returns first to-do list with given name, or null if not found
+    public ToDoList getToDoList(String name) {
+        ToDoList toDoList = null;
+        for (ToDoList list : collection) {
+            if (list.getName().equals(name)) {
+                toDoList = list;
+            }
+        }
+        return toDoList;
+    }
+
+    // EFFECTS: returns the list of to-do lists in collection
+    public List<ToDoList> getToDoLists() {
+        return collection;
+    }
+
     // EFFECTS: returns the size of the collection
     public int size() {
         return collection.size();
@@ -32,19 +50,47 @@ public class ToDoListCollection {
         collection.add(toDoList);
     }
 
-    /* Has not been implemented yet. Not part of user stories.
-
-    // EFFECTS: returns first to-do list with given name
-    public void getToDoList(String name) {}
-
     // MODIFIES: this
-    // EFFECTS: removes the to-do list with given name from the collection
-    public void removeToDoList(String name) {}
-
-    // EFFECTS: displays all items in the collection
-    public String displayAll() {
-        return "";
+    // EFFECTS: removes the first to-do list with given name from the collection
+    public void removeToDoList(String name) {
+        for (ToDoList list : collection) {
+            if (list.getName().equals(name)) {
+                collection.remove(list);
+                break;
+            }
+        }
     }
 
-     */
+    // REQUIRES: index must be valid
+    // MODIFIES: this
+    // EFFECTS: removes the to-do list at the given index
+    public void removeToDoList(int index) {
+        collection.remove(index);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: removes all to-do lists from the collection
+    public void clearAll() {
+        collection.clear();
+    }
+
+    // EFFECTS: return string of all items in the collection
+    public String displayAll() {
+        String result = "";
+        for (ToDoList list : collection) {
+            result = result + list.display() + "\n";
+        }
+        return result;
+    }
+
+    // EFFECTS: returns a JSON object of to-do lists
+    public JSONObject toJson() {
+        JSONObject object = new JSONObject();
+        JSONArray array = new JSONArray();
+        for (ToDoList list : collection) {
+            array.put(list.toJson());
+        }
+        object.put("collection", array);
+        return object;
+    }
 }

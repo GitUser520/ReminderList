@@ -1,0 +1,31 @@
+{
+  "collection": [
+    {
+      "name": "personal",
+      "tasks": [
+        {
+          "task name": "buy groceries",
+          "completion status": false,
+          "due date": {
+            "year": 2020,
+            "month": 11,
+            "day": 2
+          }
+        },
+        {
+          "task name": "wash dishes",
+          "completion status": true,
+          "due date": null
+        }
+      ]
+    },
+    {
+      "name": "work",
+      "tasks": []
+    },
+    {
+      "name": "other",
+      "tasks": []
+    }
+  ]
+}

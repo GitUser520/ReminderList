@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 // Represents a task with its name, completion status, and an optional due date.
 public class Task {
 
@@ -12,6 +14,13 @@ public class Task {
         this.name = name;
         this.completionStatus = false;
         dueDate = null;
+    }
+
+    // EFFECTS: constructs a task with given name, completion status, and due date
+    public Task(String name, Boolean completionStatus, Date dueDate) {
+        this.name = name;
+        this.completionStatus = completionStatus;
+        this.dueDate = dueDate;
     }
 
     // EFFECTS: returns the name of this task
@@ -68,5 +77,18 @@ public class Task {
             return name + ": incomplete.";
         }
         return name + ": complete.";
+    }
+
+    // EFFECTS: returns a JSON object with name, completion status, and date
+    public JSONObject toJson() {
+        JSONObject task = new JSONObject();
+        task.put("task name", name);
+        task.put("completion status", completionStatus);
+        if (dueDate != null) {
+            task.put("due date", dueDate.toJson());
+        } else {
+            task.put("due date", JSONObject.NULL);
+        }
+        return task;
     }
 }

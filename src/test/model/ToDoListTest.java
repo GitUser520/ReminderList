@@ -187,7 +187,7 @@ class ToDoListTest {
 
         assertEquals(0, toDoList.size());
 
-        assertEquals("", toDoList.display());
+        assertEquals(toDoList.getName() + "\n", toDoList.display());
     }
 
     @Test
@@ -197,7 +197,7 @@ class ToDoListTest {
         assertEquals(1, toDoList.size());
         assertTrue(toDoList.getTask(0).equals(task1));
 
-        assertEquals(task1.toString() + "\n", toDoList.display());
+        assertEquals(toDoList.getName() + "\n\t" + task1.toString() + "\n", toDoList.display());
     }
 
     @Test
@@ -211,8 +211,8 @@ class ToDoListTest {
         assertTrue(toDoList.getTask(1).equals(task2));
         assertTrue(toDoList.getTask(2).equals(task3));
 
-        assertEquals(task1.toString() + "\n" + task2.toString() +
-                "\n" + task3.toString() + "\n", toDoList.display());
+        assertEquals(toDoList.getName() + "\n\t" + task1.toString()
+                + "\n\t" + task2.toString() + "\n\t" + task3.toString() + "\n", toDoList.display());
     }
 
     /*
