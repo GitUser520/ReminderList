@@ -65,6 +65,7 @@ public class ToDoList {
         }
         return false;
     }
+
     // EFFECTS: sets the name of the to-do list to the given name
     public void setName(String name) {
         this.name = name;
