@@ -148,10 +148,10 @@ public class TaskTest {
     public void testToStringComplete() {
         task.setName("Do Laundry");
         task.completeTask();
-        assertEquals("Do Laundry: complete.", task.toString());
+        assertEquals("Do Laundry: complete.", task.displayTask());
 
         task.setDueDate(new Date(2021, 2, 13));
-        assertEquals("Do Laundry: complete.", task.toString());
+        assertEquals("Do Laundry: complete.", task.displayTask());
     }
 
     @Test
@@ -162,13 +162,13 @@ public class TaskTest {
         task.setDueDate(date);
 
         assertEquals("Go shopping: incomplete. Due: " + date.toString(),
-                task.toString());
+                task.displayTask());
     }
 
     @Test
     public void testToStringNotCompleteNoDueDate() {
         task.setName("Go shopping");
-        assertEquals("Go shopping: incomplete.", task.toString());
+        assertEquals("Go shopping: incomplete.", task.displayTask());
     }
 
     @Test

@@ -41,6 +41,16 @@ public class ToDoList {
         return name;
     }
 
+    // EFFECTS: returns the task at the front of the to-do list
+    public Task getFirst() {
+        return toDoList.get(0);
+    }
+
+    // EFFECTS: returns all tasks in the to-do list
+    public List<Task> getAllTasks() {
+        return toDoList;
+    }
+
     // EFFECTS: returns the size of the to-do list
     public int size() {
         return toDoList.size();
@@ -54,6 +64,10 @@ public class ToDoList {
             }
         }
         return false;
+    }
+    // EFFECTS: sets the name of the to-do list to the given name
+    public void setName(String name) {
+        this.name = name;
     }
 
     // MODIFIES: this
@@ -92,9 +106,14 @@ public class ToDoList {
     public String display() {
         String result = name + "\n";
         for (Task task: toDoList) {
-            result = result + "\t" + task.toString() + "\n";
+            result = result + "\t" + task.displayTask() + "\n";
         }
         return result;
+    }
+
+    // EFFECTS: returns the name of the to-do list
+    public String toString() {
+        return name;
     }
 
     // EFFECTS: returns a JSON object with to-do list name and tasks

@@ -69,14 +69,16 @@ public class Task {
     // EFFECTS: if task is incomplete, displays the task as incomplete, with
     //                     due date (if applicable)
     //          if complete, display task as complete
-    @Override
+    public String displayTask() {
+        String displayString = name + "\n\n";
+        displayString = displayString + "Status: " + (completionStatus ? "complete" : "incomplete") + "\n";
+        displayString = displayString + "Due date: " + (dueDate == null ? "" : dueDate.toString());
+        return displayString;
+    }
+
+    // EFFECTS: returns the name of the task
     public String toString() {
-        if ((!completionStatus) && dueDate != null) {
-            return name + ": incomplete. Due: " + dueDate.toString();
-        } else if (!completionStatus) {
-            return name + ": incomplete.";
-        }
-        return name + ": complete.";
+        return name;
     }
 
     // EFFECTS: returns a JSON object with name, completion status, and date

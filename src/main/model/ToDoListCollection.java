@@ -69,6 +69,12 @@ public class ToDoListCollection {
     }
 
     // MODIFIES: this
+    // EFFECTS: if to-do list in collection, removes the to-do list from the collection
+    public void removeToDoList(ToDoList toDoList) {
+        collection.remove(toDoList);
+    }
+
+    // MODIFIES: this
     // EFFECTS: removes all to-do lists from the collection
     public void clearAll() {
         collection.clear();
