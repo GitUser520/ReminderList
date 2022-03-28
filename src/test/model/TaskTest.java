@@ -15,7 +15,7 @@ public class TaskTest {
 
     @Test
     public void testEditName() {
-        task.editName("Laundry");
+        task.setName("Laundry");
         assertEquals("Laundry", task.getName());
     }
 
@@ -35,12 +35,12 @@ public class TaskTest {
     public void testEqualsByName() {
         Task expectedTask = new Task ("Do laundry");
 
-        task.editName("Finish laundry");
+        task.setName("Finish laundry");
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
 
-        task.editName("Do laundry");
+        task.setName("Do laundry");
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
@@ -50,7 +50,7 @@ public class TaskTest {
     public void testEqualsByCompletionStatus() {
         Task expectedTask = new Task("Do laundry");
 
-        task.editName("Do laundry");
+        task.setName("Do laundry");
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
@@ -70,7 +70,7 @@ public class TaskTest {
     public void testEqualsByDueDate() {
         Task expectedTask = new Task ("Do laundry");
 
-        task.editName("Do laundry");
+        task.setName("Do laundry");
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
@@ -98,7 +98,7 @@ public class TaskTest {
 
     @Test
     public void testToStringComplete() {
-        task.editName("Do Laundry");
+        task.setName("Do Laundry");
         task.completeTask();
         assertEquals("Do Laundry: complete.", task.toString());
     }
@@ -107,7 +107,7 @@ public class TaskTest {
     public void testToStringNotCompleteWithDueDate() {
         Date date = new Date(2021, 2, 14);
 
-        task.editName("Go shopping");
+        task.setName("Go shopping");
         task.setDueDate(date);
 
         assertEquals("Go shopping: incomplete. Due: " + date.toString(),
@@ -116,7 +116,7 @@ public class TaskTest {
 
     @Test
     public void testToStringNotCompleteNoDueDate() {
-        task.editName("Go shopping");
+        task.setName("Go shopping");
         assertEquals("Go shopping: incomplete.", task.toString());
     }
 

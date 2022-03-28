@@ -46,13 +46,13 @@ class ToDoListTest {
 
     @Test
     public void testGetTaskByNameManySameName() {
-        task1.editName("Task Alpha");
+        task1.setName("Task Alpha");
         task1.completeTask();
 
-        task2.editName("Task Alpha");
+        task2.setName("Task Alpha");
         task2.setDueDate(new Date(2020, 11, 13));
 
-        task3.editName("Task Alpha");
+        task3.setName("Task Alpha");
 
         toDoList.addTask(task1);
         toDoList.addTask(task2);

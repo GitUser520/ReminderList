@@ -30,8 +30,8 @@ public class Task {
     }
 
     // MODIFIES: this
-    // EFFECTS: changes the task name to given name
-    public void editName(String name) {
+    // EFFECTS: sets the task name to given name
+    public void setName(String name) {
         this.name = name;
     }
 

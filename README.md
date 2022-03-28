@@ -15,9 +15,9 @@ storage, personal information is in the hands of the user.
 
 ## User Stories
 
+- As a user, I want to be able to see all tasks in my to-do list.
 - As a user, I want to be able to add a task to my to-do list.
-- As a user, I want to be able to mark a task as complete.
 - As a user, I want to be able to delete tasks from my to-do list.
-- As a user, I want to be able to remove tasks from my to-do list.
+- As a user, I want to be able to mark a task as complete.
 - As a user, I want to be able to modify tasks in my to-do list.
 - As a user, I want to be able to clear all tasks from my to-do list.
