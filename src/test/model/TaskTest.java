@@ -32,22 +32,6 @@ public class TaskTest {
     }
 
     @Test
-    public void testToStringNotCompleteNotNull() {
-        Date date = new Date(2021, 2, 14);
-
-        task.editName("Go shopping");
-        task.setDueDate(date);
-        assertEquals("Go shopping: incomplete. Due: " + date.toString(),
-                task.toString());
-    }
-
-    @Test
-    public void testToStringNotCompleteAndNull() {
-        task.editName("Go shopping");
-        assertEquals("Go shopping: incomplete.", task.toString());
-    }
-
-    @Test
     public void testEqualsByName() {
         Task expectedTask = new Task ("Do laundry");
 
@@ -100,6 +84,16 @@ public class TaskTest {
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
+
+        task.completeTask();
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
+        expectedTask.completeTask();
+
+        assertTrue(task.equals(expectedTask));
+        assertTrue(expectedTask.equals(task));
     }
 
     @Test
@@ -107,6 +101,23 @@ public class TaskTest {
         task.editName("Do Laundry");
         task.completeTask();
         assertEquals("Do Laundry: complete.", task.toString());
+    }
+
+    @Test
+    public void testToStringNotCompleteWithDueDate() {
+        Date date = new Date(2021, 2, 14);
+
+        task.editName("Go shopping");
+        task.setDueDate(date);
+
+        assertEquals("Go shopping: incomplete. Due: " + date.toString(),
+                task.toString());
+    }
+
+    @Test
+    public void testToStringNotCompleteNoDueDate() {
+        task.editName("Go shopping");
+        assertEquals("Go shopping: incomplete.", task.toString());
     }
 
 }

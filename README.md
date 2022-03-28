@@ -20,4 +20,4 @@ storage, personal information is in the hands of the user.
 - As a user, I want to be able to delete tasks from my to-do list.
 - As a user, I want to be able to remove tasks from my to-do list.
 - As a user, I want to be able to modify tasks in my to-do list.
-- As a user, I want to be able to make multiple to-do lists.
+- As a user, I want to be able to clear all tasks from my to-do list.
