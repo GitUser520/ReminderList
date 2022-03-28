@@ -64,6 +64,11 @@ public class TaskTest {
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
+
+        task.setName("Go shopping");
+
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
     }
 
     @Test
