@@ -47,18 +47,15 @@ exceptions are:
 
 Reflections:
 
-If I had more time to work on this project, I would have refactored the ToDoListGUI class, by separating the 
+- If I had more time to work on this project, I would have refactored the ToDoListGUI class, by separating the 
 GUI into different sections. Currently, it only has one class that holds all of the items. By separating it 
 into different sections that extend different frames, I believe that I can better segment the different panels
 of the GUI, and increase the cohesion of the class. 
-
-Additionally, I might remove some buttons and add pop-up menus instead. I think that would be more intuitive,
+- Additionally, I might remove some buttons and add pop-up menus instead. I think that would be more intuitive,
 especially for the renaming feature of the project.
-
-I have also considered swapping the collection list for a combo box instead. That may be more suitable, since
+- I have also considered swapping the collection list for a combo box instead. That may be more suitable, since
 you can only select a single to-do list in the collection.
-
-Finally, I believe that I should implement by Task class' equal method with an @Override of the default equals
+- Finally, I believe that I should implement by Task class' equal method with an @Override of the default equals
 method instead of overloading the method as it is currently done.
 
 
