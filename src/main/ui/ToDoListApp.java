@@ -170,6 +170,7 @@ public class ToDoListApp {
             jsonWriter.open();
             jsonWriter.write(collection);
             jsonWriter.close();
+            System.out.println("Save successful.");
         } catch (FileNotFoundException e) {
             System.out.println("Error writing to specified file: " + destination);
         }
@@ -184,6 +185,7 @@ public class ToDoListApp {
 
         try {
             collection = jsonReader.read();
+            System.out.println("Load successful.");
         } catch (IOException e) {
             System.out.println("Error reading from specified file: " + destination);
         }
