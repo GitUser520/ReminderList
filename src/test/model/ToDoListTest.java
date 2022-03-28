@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -71,6 +72,20 @@ class ToDoListTest {
         assertFalse(task1.equals(toDoList.getTask("Task Alpha")));
         assertFalse(task2.equals(toDoList.getTask("Task Alpha")));
         assertTrue(task3.equals(toDoList.getTask("Task Alpha")));
+    }
+
+    @Test
+    public void testContainsDoesNotContainTask() {
+        toDoList.addTask(task1);
+        assertEquals(1, toDoList.size());
+        assertFalse(toDoList.contains(task3));
+    }
+
+    @Test
+    public void testContainsContainsTask() {
+        toDoList.addTask(task2);
+        assertEquals(1, toDoList.size());
+        assertTrue(toDoList.contains(task2));
     }
 
     @Test
@@ -213,6 +228,37 @@ class ToDoListTest {
 
         assertEquals(toDoList.getName() + "\n\t" + task1.toString()
                 + "\n\t" + task2.toString() + "\n\t" + task3.toString() + "\n", toDoList.display());
+    }
+
+    @Test
+    public void testToJsonEmpty() {
+        assertEquals(0, toDoList.size());
+        JSONObject jsonList = toDoList.toJson();
+
+        assertEquals(toDoList.getName(), jsonList.getString("name"));
+        assertEquals(0, jsonList.getJSONArray("tasks").length());
+    }
+
+    @Test
+    public void testToJsonSingle() {
+        toDoList.addTask(task1);
+        assertEquals(1, toDoList.size());
+
+        JSONObject jsonList = toDoList.toJson();
+        assertEquals(toDoList.getName(), jsonList.getString("name"));
+        assertEquals(1, jsonList.getJSONArray("tasks").length());
+    }
+
+    @Test
+    public void testToJsonMany() {
+        toDoList.addTask(task1);
+        toDoList.addTask(task2);
+        toDoList.addTask(task3);
+        assertEquals(3, toDoList.size());
+
+        JSONObject jsonList = toDoList.toJson();
+        assertEquals(toDoList.getName(), jsonList.getString("name"));
+        assertEquals(3, jsonList.getJSONArray("tasks").length());
     }
 
     /*

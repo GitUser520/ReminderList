@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -170,4 +171,33 @@ public class TaskTest {
         assertEquals("Go shopping: incomplete.", task.toString());
     }
 
+    @Test
+    public void testToJsonNullDate() {
+        task.setName("Task 1");
+        assertEquals(null, task.getDueDate());
+        JSONObject jsonTask = task.toJson();
+        assertEquals(3, jsonTask.length());
+        assertEquals("Task 1", jsonTask.get("task name"));
+        assertFalse(jsonTask.getBoolean("completion status"));
+        assertEquals(JSONObject.NULL, jsonTask.get("due date"));
+    }
+
+    @Test
+    public void testToJsonHasDate() {
+        Date date = new Date(2021, 4, 6);
+        task.setName("Task 1");
+        task.completeTask();
+        task.setDueDate(date);
+        assertTrue(task.getDueDate().equals(date));
+
+        JSONObject jsonTask = task.toJson();
+        assertEquals(3, jsonTask.length());
+        assertEquals("Task 1", jsonTask.get("task name"));
+        assertTrue(jsonTask.getBoolean("completion status"));
+
+        JSONObject jsonDate = jsonTask.getJSONObject("due date");
+        assertEquals(2021, jsonDate.get("year"));
+        assertEquals(4, jsonDate.get("month"));
+        assertEquals(6, jsonDate.get("day"));
+    }
 }

@@ -101,13 +101,9 @@ public class JsonReader {
 
     // EFFECTS: parses JSON object and returns a date
     private Date getDate(JSONObject jsonDate) {
-        try {
-            int year = jsonDate.getInt("year");
-            int month = jsonDate.getInt("month");
-            int day = jsonDate.getInt("day");
-            return new Date(year, month, day);
-        } catch (Exception e) {
-            return null;
-        }
+        int year = jsonDate.getInt("year");
+        int month = jsonDate.getInt("month");
+        int day = jsonDate.getInt("day");
+        return new Date(year, month, day);
     }
 }

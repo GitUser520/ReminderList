@@ -7,7 +7,6 @@ import model.ToDoListCollection;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,8 +15,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class JsonReaderTest extends JsonTest {
 
     @Test
-    void testReaderNonExistentFile() {
-        JsonReader reader = new JsonReader("./data/noSuchFile.json");
+    public void testReaderNonExistentFile() {
+        JsonReader reader = new JsonReader();
+        reader.setSource("./data/noSuchFile.json");
         try {
             ToDoListCollection collection = reader.read();
             fail("IOException expected");
@@ -27,7 +27,7 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderEmptyToDoListCollection() {
+    public void testReaderEmptyToDoListCollection() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyToDoListCollection.json");
         try {
             ToDoListCollection collection = reader.read();
@@ -39,7 +39,7 @@ class JsonReaderTest extends JsonTest {
     }
 
     @Test
-    void testReaderGeneralToDoListCollection() {
+    public void testReaderGeneralToDoListCollection() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralToDoListCollection.json");
         try {
             ToDoListCollection collection = reader.read();

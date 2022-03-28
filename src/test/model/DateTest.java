@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -72,5 +73,15 @@ public class DateTest {
     public void testToStringNonFourDigitYear() {
         date.setDate(20, 11, 4);
         assertEquals("20/11/4", date.toString());
+    }
+
+    @Test
+    public void testToJson() {
+        date.setDate(2111, 4, 16);
+        JSONObject jsonDate = date.toJson();
+        assertEquals(3, jsonDate.length());
+        assertEquals(2111, jsonDate.get("year"));
+        assertEquals(4, jsonDate.get("month"));
+        assertEquals(16, jsonDate.get("day"));
     }
 }

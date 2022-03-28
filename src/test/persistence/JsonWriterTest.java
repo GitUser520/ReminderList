@@ -34,7 +34,8 @@ class JsonWriterTest extends JsonTest {
     void testWriterEmptyToDoListCollection() {
         try {
             ToDoListCollection collection = new ToDoListCollection();
-            JsonWriter writer = new JsonWriter("./data/testWriterEmptyToDoListCollection.json");
+            JsonWriter writer = new JsonWriter();
+            writer.setDestination("./data/testWriterEmptyToDoListCollection.json");
             writer.open();
             writer.write(collection);
             writer.close();

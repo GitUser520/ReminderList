@@ -10,7 +10,12 @@
 - update ToDoListApp to reflect changes [done]
     - updated ToDoListApp framework [done]
     - added save/load features [fixed, done]
-- add tests for code coverage
+- add tests for code coverage [done]
+    - add tests for JsonReader [updated]
+    - add tests for JsonWriter [updated]
+    - add tests for ToDoList [updated]
+    - add tests for ToDoListCollection [updated]
+- add simple testing for .toJson() in Date, Task, ToDoList, and ToDoListCollection [done]
     
 ## Models
 
