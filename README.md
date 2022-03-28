@@ -1,4 +1,16 @@
-# To-Do List
+# Reminder List
+
+A reminder list that can remind you of missing items. Just launch the app and give it a go!
+
+Features include:
+- multiple reminder lists
+- due dates
+- console support
+- saving and loading reminder lists as JSON files
+
+Download the project and run it today!
+
+-------
 
 ## Project Proposal
 
