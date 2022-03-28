@@ -27,17 +27,6 @@ public class TestUseMain extends Frame implements ActionListener {
         textField.setBounds(50, 50, 150, 30);
         textField.setText("Hello world!!!!!!");
         textField.addActionListener(this);
-        button = new JButton("Button");
-        button.setBounds(50, 100, 100, 30);
-        button.addActionListener(this);
-        label = new JLabel("Hello world!");
-        label.setBounds(100, 200, 50, 30);
-
-        list = new ArrayList<>();
-        list.add("a");
-        list.add("b");
-        list.add("c");
-
         JList jlist = new JList(new AbstractListModel() {
             @Override
             public int getSize() {
@@ -49,44 +38,6 @@ public class TestUseMain extends Frame implements ActionListener {
                 return list.get(index);
             }
         });
-        /*
-        // Wow, so this is how it's done. :DDDDDD 
-        comboBox = new JComboBox<>(new ComboBoxModel<String>() {
-            private List<ListDataListener> observers = new ArrayList<>();
-            private int index = 0;
-
-            @Override
-            public void setSelectedItem(Object anItem) {
-                index = list.indexOf(anItem);
-            }
-
-            @Override
-            public Object getSelectedItem() {
-                return list.get(index);
-            }
-
-            @Override
-            public int getSize() {
-                return list.size();
-            }
-
-            @Override
-            public String getElementAt(int index) {
-                return list.get(index);
-            }
-
-            @Override
-            public void addListDataListener(ListDataListener l) {
-                observers.add(l);
-            }
-
-            @Override
-            public void removeListDataListener(ListDataListener l) {
-                observers.remove(l);
-            }
-        });
-        comboBox.setBounds(200, 200, 100, 30);*/
-
         frame.add(textField);
         frame.add(button);
         frame.add(label);
@@ -112,9 +63,37 @@ public class TestUseMain extends Frame implements ActionListener {
     }
 
     // Code segments which I'd love to save :D
-    private void codeSegments() {
-
-    }
+    /*
+        // Wow, so this is how it's done. :DDDDDD
+        comboBox = new JComboBox<>(new ComboBoxModel<String>() {
+            private List<ListDataListener> observers = new ArrayList<>();
+            private int index = 0;
+            @Override
+            public void setSelectedItem(Object anItem) {
+                index = list.indexOf(anItem);
+            }
+            @Override
+            public Object getSelectedItem() {
+                return list.get(index);
+            }
+            @Override
+            public int getSize() {
+                return list.size();
+            }
+            @Override
+            public String getElementAt(int index) {
+                return list.get(index);
+            }
+            @Override
+            public void addListDataListener(ListDataListener l) {
+                observers.add(l);
+            }
+            @Override
+            public void removeListDataListener(ListDataListener l) {
+                observers.remove(l);
+            }
+        });
+        comboBox.setBounds(200, 200, 100, 30);*/
 }
 
 
