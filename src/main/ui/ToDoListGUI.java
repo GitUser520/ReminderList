@@ -1,6 +1,5 @@
 package ui;
 
-import exception.NotInRangeException;
 import model.Date;
 import model.Task;
 import model.ToDoList;
@@ -9,13 +8,10 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
-import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -331,37 +327,13 @@ public class ToDoListGUI implements ActionListener, ListSelectionListener {
             try {
                 int yearInt = Integer.parseInt(year);
                 int monthInt = Integer.parseInt(month);
-                checkIntegerInRange(monthInt, 1, 12);
                 int dayInt = Integer.parseInt(day);
-                checkIntegerInRange(monthInt, 1, maxDayInMonth(yearInt, monthInt));
                 currentToDoList.getTask(selectedIndex).setDueDate(new Date(yearInt, monthInt, dayInt));
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(frame, "Failed to create date.");
             }
         }
         displayTask();
-    }
-
-    // EFFECTS: throws NotInRangeException if value is not within [min,max]
-    private void checkIntegerInRange(int value, int min, int max) throws NotInRangeException {
-        if ((value < min) || (value > max)) {
-            throw new NotInRangeException();
-        }
-    }
-
-    // TODO change the entirety of the date implementation since dates throw exceptions now
-    // REQUIRES: month is an int between 1 and 12
-    // EFFECTS: returns the max valid day in the month in the year
-    private int maxDayInMonth(int year, int month) {
-        if ((month == 1) || (month == 3) || (month == 5) || (month == 7)
-                || (month == 8) || (month == 10) || (month == 12)) {
-            return 31;
-        } else if ((month == 4) || (month == 6) || (month == 9) || (month == 11)) {
-            return 30;
-        } else if ((month == 2) && (year % 4 == 0)) {
-            return 29;
-        }
-        return 28;
     }
 
     // MODIFIES: this
@@ -494,4 +466,27 @@ public class ToDoListGUI implements ActionListener, ListSelectionListener {
         }
         currentJList.updateUI();
     }
+
+/*
+    // EFFECTS: throws NotInRangeException if value is not within [min,max]
+    private void checkIntegerInRange(int value, int min, int max) throws NotInRangeException {
+        if ((value < min) || (value > max)) {
+            throw new NotInRangeException();
+        }
+    }
+
+    // REQUIRES: month is an int between 1 and 12
+    // EFFECTS: returns the max valid day in the month in the year
+    private int maxDayInMonth(int year, int month) {
+        if ((month == 1) || (month == 3) || (month == 5) || (month == 7)
+                || (month == 8) || (month == 10) || (month == 12)) {
+            return 31;
+        } else if ((month == 4) || (month == 6) || (month == 9) || (month == 11)) {
+            return 30;
+        } else if ((month == 2) && (year % 4 == 0)) {
+            return 29;
+        }
+        return 28;
+    }
+    */
 }
