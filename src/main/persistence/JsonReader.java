@@ -104,6 +104,12 @@ public class JsonReader {
         int year = jsonDate.getInt("year");
         int month = jsonDate.getInt("month");
         int day = jsonDate.getInt("day");
-        return new Date(year, month, day);
+        Date date = null;
+        try {
+            date = new Date(year, month, day);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date;
     }
 }

@@ -22,8 +22,16 @@ public class TaskTest {
 
     @Test
     public void testSetDueDate() {
-        task.setDueDate(new Date(2021, 1, 20));
-        assertTrue(task.getDueDate().equals(new Date(2021, 1, 20)));
+        Date date1 = null;
+        Date date2 = null;
+        try {
+            date1 = new Date(2021, 1, 20);
+            date2 = new Date(2021, 1, 20);
+        } catch (Exception e) {
+            fail();
+        }
+        task.setDueDate(date1);
+        assertTrue(task.getDueDate().equals(date2));
     }
 
     @Test
@@ -79,15 +87,25 @@ public class TaskTest {
 
     @Test
     public void testEqualsByDifferentDueDate() {
+        Date date1 = null;
+        Date date2 = null;
+
+        try {
+            date1 = new Date(2020,2,3);
+            date2 = new Date(1999, 1, 11);
+        } catch (Exception e) {
+            fail();
+        }
+
         Task expectedTask = new Task ("Do laundry");
-        expectedTask.setDueDate(new Date(2020,2,3));
+        expectedTask.setDueDate(date1);
 
         task.setName("Not do laundry");
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
 
-        task.setDueDate(new Date(1999, 1, 11));
+        task.setDueDate(date2);
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
@@ -107,7 +125,7 @@ public class TaskTest {
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
 
-        task.setDueDate(new Date(2020,2,3));
+        task.setDueDate(date1);
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
@@ -115,15 +133,22 @@ public class TaskTest {
 
     @Test
     public void testEqualsBySameDueDate() {
+        Date date = null;
+        try {
+            date = new Date(2020,2,3);
+        } catch (Exception e) {
+            fail();
+        }
+
         Task expectedTask = new Task ("Do laundry");
-        expectedTask.setDueDate(new Date(2020,2,3));
+        expectedTask.setDueDate(date);
 
         task.setName("Not do laundry");
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
 
-        task.setDueDate(new Date(2020,2,3));
+        task.setDueDate(date);
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
@@ -148,27 +173,39 @@ public class TaskTest {
     public void testToStringComplete() {
         task.setName("Do Laundry");
         task.completeTask();
-        assertEquals("Do Laundry: complete.", task.displayTask());
+        assertEquals("Do Laundry\n\nStatus: complete\nDue date: ", task.displayTask());
 
-        task.setDueDate(new Date(2021, 2, 13));
-        assertEquals("Do Laundry: complete.", task.displayTask());
+        Date date = null;
+        try {
+            date = new Date(2021, 2, 13);
+        } catch (Exception e) {
+            fail();
+        }
+
+        task.setDueDate(date);
+        assertEquals("Do Laundry\n\nStatus: complete\nDue date: 2021/2/13", task.displayTask());
     }
 
     @Test
     public void testToStringNotCompleteWithDueDate() {
-        Date date = new Date(2021, 2, 14);
+        Date date = null;
+        try {
+            date = new Date(2021, 2, 14);
+        } catch (Exception e) {
+            fail();
+        }
 
         task.setName("Go shopping");
         task.setDueDate(date);
 
-        assertEquals("Go shopping: incomplete. Due: " + date.toString(),
+        assertEquals("Go shopping\n\nStatus: incomplete\nDue date: " + date.toString(),
                 task.displayTask());
     }
 
     @Test
     public void testToStringNotCompleteNoDueDate() {
         task.setName("Go shopping");
-        assertEquals("Go shopping: incomplete.", task.displayTask());
+        assertEquals("Go shopping\n\nStatus: incomplete\nDue date: ", task.displayTask());
     }
 
     @Test
@@ -184,7 +221,12 @@ public class TaskTest {
 
     @Test
     public void testToJsonHasDate() {
-        Date date = new Date(2021, 4, 6);
+        Date date = null;
+        try {
+            date = new Date(2021, 4, 6);
+        } catch (Exception e) {
+            fail();
+        }
         task.setName("Task 1");
         task.completeTask();
         task.setDueDate(date);

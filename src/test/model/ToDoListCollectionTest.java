@@ -16,11 +16,18 @@ public class ToDoListCollectionTest {
 
     @BeforeEach
     public void setUp() {
+        Date date = null;
+        try {
+            date = new Date(2023, 2, 1);
+        } catch (Exception e) {
+            fail();
+        }
+
         collection = new ToDoListCollection();
         list1 = new ToDoList("List 1");
         list2 = new ToDoList("List 2");
         list1.addTask(new Task("buy groceries"));
-        list1.addTask(new Task("clean bedroom", false, new Date(2023, 2, 1)));
+        list1.addTask(new Task("clean bedroom", false, date));
         list1.addTask(new Task("completed task", true, null));
         list2.addTask(new Task("task"));
     }
@@ -56,6 +63,20 @@ public class ToDoListCollectionTest {
         collection.addToDoList(list2);
 
         assertEquals(toDoLists, collection.getToDoLists());
+    }
+
+    @Test
+    public void testGetIndexListIsNotInCollection() {
+        assertEquals(-1, collection.getIndex(list2));
+    }
+
+    @Test
+    public void testGetIndexListIsInCollection() {
+        collection.addToDoList(list1);
+        collection.addToDoList(list2);
+
+        assertEquals(0, collection.getIndex(list1));
+        assertEquals(1, collection.getIndex(list2));
     }
 
     @Test

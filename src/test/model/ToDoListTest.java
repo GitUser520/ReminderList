@@ -4,6 +4,8 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ToDoListTest {
@@ -52,11 +54,18 @@ class ToDoListTest {
 
     @Test
     public void testGetTaskByNameManySameName() {
+        Date date = null;
+        try {
+            date = new Date(2020, 11, 13);
+        } catch (Exception e) {
+            fail();
+        }
+        
         task1.setName("Task Alpha");
         task1.completeTask();
 
         task2.setName("Task Alpha");
-        task2.setDueDate(new Date(2020, 11, 13));
+        task2.setDueDate(date);
 
         task3.setName("Task Alpha");
 
@@ -72,6 +81,36 @@ class ToDoListTest {
         assertFalse(task1.equals(toDoList.getTask("Task Alpha")));
         assertFalse(task2.equals(toDoList.getTask("Task Alpha")));
         assertTrue(task3.equals(toDoList.getTask("Task Alpha")));
+    }
+
+    @Test
+    public void testGetFirstEmpty() {
+        assertEquals(null, toDoList.getFirst());
+    }
+
+    @Test
+    public void testGetFirstNotEmpty() {
+        toDoList.addTask(task1);
+        toDoList.addTask(task2);
+        assertEquals(task2, toDoList.getFirst());
+    }
+
+    @Test
+    public void testGetAllTasksEmpty() {
+        assertEquals(0, toDoList.getAllTasks().size());
+    }
+
+    @Test
+    public void testGetAllTasks() {
+        toDoList.addTask(task1);
+        toDoList.addTask(task2);
+        toDoList.addTask(task3);
+
+        List<Task> tasks = toDoList.getAllTasks();
+        assertEquals(3, tasks.size());
+        assertEquals(task3, tasks.get(0));
+        assertEquals(task2, tasks.get(1));
+        assertEquals(task1, tasks.get(2));
     }
 
     @Test

@@ -1,6 +1,10 @@
 package model;
 
+import exception.InvalidDayException;
+import exception.InvalidMonthException;
+import exception.InvalidValueException;
 import org.json.JSONObject;
+import org.omg.CORBA.DynAnyPackage.InvalidValue;
 
 // Represents a date with its year, month, and day
 public class Date {
@@ -9,10 +13,17 @@ public class Date {
     private int month;
     private int day;
 
-    // REQUIRES: month is between 1 and 12, day is between 1 and 31
-    //           date must be a valid date
     // EFFECTS: constructs a date with given year, month and day.
-    public Date(int year, int month, int day) {
+    //          throws InvalidMonthException if month is invalid
+    //          throws InvalidDayException
+    public Date(int year, int month, int day)
+            throws InvalidMonthException, InvalidDayException {
+        if (!hasValidMonth(month)) {
+            throw new InvalidMonthException();
+        }
+        if (!hasValidDay(year, month, day)) {
+            throw new InvalidDayException();
+        }
         this.year = year;
         this.month = month;
         this.day = day;
@@ -33,33 +44,69 @@ public class Date {
         return day;
     }
 
-    // REQUIRES: year is non-negative
     // MODIFIES: this
     // EFFECTS: sets year as given year
     public void setYear(int year) {
         this.year = year;
     }
 
-    // REQUIRES: 1 <= month <= 12
     // MODIFIES: this
-    // EFFECTS: sets month as given month
-    public void setMonth(int month) {
+    // EFFECTS: sets month as given month, or
+    //          throws InvalidMonthException if month is invalid
+    public void setMonth(int month) throws InvalidMonthException {
+        if (!hasValidMonth(month)) {
+            throw new InvalidMonthException();
+        }
         this.month = month;
     }
 
-    // REQUIRES: day must be a valid day in the month
+    // EFFECTS: returns true if the month is valid, false otherwise
+    private boolean hasValidMonth(int month) {
+        return (1 <= month) && (month <= 12);
+    }
+
     // MODIFIES: this
     // EFFECTS: sets day as given day
-    public void setDay(int day) {
+    public void setDay(int day) throws InvalidDayException {
+        if (!hasValidDay(this.year, this.month, day)) {
+            throw new InvalidDayException();
+        }
         this.day = day;
+    }
+
+    // EFFECTS: returns true if the day is valid, false otherwise
+    private boolean hasValidDay(int year, int month, int day) {
+        int maxDayInMonth = maxDayInMonth(year, month);
+        return (0 < day) && (day <= maxDayInMonth);
     }
 
     // MODIFIES: this
     // EFFECTS: sets year, month, day as given year, month, day
-    public void setDate(int year, int month, int day) {
+    public void setDate(int year, int month, int day)
+            throws InvalidDayException, InvalidMonthException {
+        if (!hasValidMonth(month)) {
+            throw new InvalidMonthException();
+        }
+        if (!hasValidDay(year, month, day)) {
+            throw new InvalidDayException();
+        }
         this.year = year;
         this.month = month;
         this.day = day;
+    }
+
+    // REQUIRES: month is an int between 1 and 12
+    // EFFECTS: returns the max valid day in the month in the year
+    private int maxDayInMonth(int year, int month) {
+        if ((month == 1) || (month == 3) || (month == 5) || (month == 7)
+                || (month == 8) || (month == 10) || (month == 12)) {
+            return 31;
+        } else if ((month == 4) || (month == 6) || (month == 9) || (month == 11)) {
+            return 30;
+        } else if ((month == 2) && (year % 4 == 0)) {
+            return 29;
+        }
+        return 28;
     }
 
     // EFFECTS: returns true if the year, month, day of the two dates

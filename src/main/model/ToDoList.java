@@ -18,7 +18,6 @@ public class ToDoList {
         toDoList = new ArrayList<>();
     }
 
-    // REQUIRES: taskName must be the name of a task in toDoList
     // EFFECTS: gets the first task with the given task name
     //          returns null if not found
     public Task getTask(String taskName) {
@@ -42,7 +41,11 @@ public class ToDoList {
     }
 
     // EFFECTS: returns the task at the front of the to-do list
+    //          or null if to-do list is empty
     public Task getFirst() {
+        if (toDoList.size() == 0) {
+            return null;
+        }
         return toDoList.get(0);
     }
 
@@ -90,7 +93,6 @@ public class ToDoList {
         return false;
     }
 
-    // REQUIRES: 0 <= index < size of to-do list
     // MODIFIES: this
     // EFFECTS: removes the task at the given index
     public void removeTask(int index) {

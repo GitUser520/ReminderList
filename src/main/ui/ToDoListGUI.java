@@ -349,6 +349,7 @@ public class ToDoListGUI implements ActionListener, ListSelectionListener {
         }
     }
 
+    // TODO change the entirety of the date implementation since dates throw exceptions now
     // REQUIRES: month is an int between 1 and 12
     // EFFECTS: returns the max valid day in the month in the year
     private int maxDayInMonth(int year, int month) {

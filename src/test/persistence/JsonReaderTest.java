@@ -42,11 +42,18 @@ class JsonReaderTest extends JsonTest {
     public void testReaderGeneralToDoListCollection() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralToDoListCollection.json");
         try {
+            Date date = null;
+            try {
+                date = new Date(2020, 11, 2);
+            } catch (Exception e) {
+                fail();
+            }
+
             ToDoListCollection collection = reader.read();
             assertEquals(3, collection.size());
 
             checkToDoListNameAndSize("personal", 2, 0, collection);
-            Task task1 = new Task("buy groceries", false, new Date(2020, 11, 2));
+            Task task1 = new Task("buy groceries", false, date);
             Task task2 = new Task("wash dishes", true, null);
             ToDoList toDoList1 = collection.getToDoList(0);
             checkTaskInToDoList(task1, toDoList1);

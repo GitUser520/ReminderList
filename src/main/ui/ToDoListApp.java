@@ -328,7 +328,14 @@ public class ToDoListApp {
         System.out.println("Please input a valid day in the month:");
         day = parseIntFromString(1,maxDayInMonth(year,month));
 
-        return new Date(year, month, day);
+        Date date = null;
+        try {
+            date = new Date(year, month, day);
+        } catch (Exception e) {
+            e.getStackTrace();
+        }
+
+        return date;
     }
 
     // REQUIRES: month is an int between 1 and 12

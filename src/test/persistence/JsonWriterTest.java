@@ -55,7 +55,13 @@ class JsonWriterTest extends JsonTest {
             ToDoListCollection collection = new ToDoListCollection();
             ToDoList list1 = new ToDoList("shopping");
             ToDoList list2 = new ToDoList("chores");
-            list1.addTask(new Task("buy milk", false, new Date(2021, 3, 7)));
+            Date date = null;
+            try {
+                date = new Date(2021, 3, 7);
+            } catch (Exception e) {
+                fail();
+            }
+            list1.addTask(new Task("buy milk", false, date));
             list1.addTask(new Task("buy potatoes", false, null));
             list1.addTask(new Task("buy onions", true, null));
             collection.addToDoList(list1);
@@ -74,7 +80,7 @@ class JsonWriterTest extends JsonTest {
             ToDoList toDoList1 = collection.getToDoList(0);
             ToDoList toDoList2 = collection.getToDoList(1);
 
-            checkTaskInToDoList(new Task("buy milk", false, new Date(2021, 3, 7)),
+            checkTaskInToDoList(new Task("buy milk", false, date),
                     toDoList1);
             checkTaskInToDoList(new Task("buy potatoes", false, null),
                     toDoList1);

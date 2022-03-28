@@ -40,6 +40,7 @@ public class ToDoListCollection {
     }
 
     // EFFECTS: returns the index of the to-do list object
+    //          or -1 if to-do list is not found
     public int getIndex(ToDoList toDoList) {
         return collection.indexOf(toDoList);
     }
@@ -66,7 +67,6 @@ public class ToDoListCollection {
         }
     }
 
-    // REQUIRES: index must be valid
     // MODIFIES: this
     // EFFECTS: removes the to-do list at the given index
     public void removeToDoList(int index) {
