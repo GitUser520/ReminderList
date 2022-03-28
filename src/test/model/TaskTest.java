@@ -70,6 +70,9 @@ public class TaskTest {
     public void testEqualsByDueDate() {
         Task expectedTask = new Task ("Do laundry");
 
+        assertFalse(task.equals(expectedTask));
+        assertFalse(expectedTask.equals(task));
+
         task.setName("Do laundry");
 
         assertTrue(task.equals(expectedTask));
@@ -80,17 +83,12 @@ public class TaskTest {
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
 
-        task.setDueDate(new Date(2020,2,3));
-
-        assertTrue(task.equals(expectedTask));
-        assertTrue(expectedTask.equals(task));
-
-        task.completeTask();
+        task.setDueDate(new Date(1999, 1, 11));
 
         assertFalse(task.equals(expectedTask));
         assertFalse(expectedTask.equals(task));
 
-        expectedTask.completeTask();
+        task.setDueDate(new Date(2020,2,3));
 
         assertTrue(task.equals(expectedTask));
         assertTrue(expectedTask.equals(task));
@@ -100,6 +98,9 @@ public class TaskTest {
     public void testToStringComplete() {
         task.setName("Do Laundry");
         task.completeTask();
+        assertEquals("Do Laundry: complete.", task.toString());
+
+        task.setDueDate(new Date(2021, 2, 13));
         assertEquals("Do Laundry: complete.", task.toString());
     }
 

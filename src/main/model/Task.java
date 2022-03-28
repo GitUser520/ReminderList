@@ -63,7 +63,7 @@ public class Task {
     public String toString() {
         if ((!completionStatus) && dueDate != null) {
             return name + ": incomplete. Due: " + dueDate.toString();
-        } else if ((!completionStatus) && dueDate == null) {
+        } else if (!completionStatus) {
             return name + ": incomplete.";
         }
         return name + ": complete.";
