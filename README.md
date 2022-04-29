@@ -40,7 +40,7 @@ storage, personal information is in the hands of the user.
 - As a user, I want to be able to save the current to-do lists as a file.
 - As a user, I want to be able to load previously-saved to-do lists from a file.
 
-## Phase 4: Task 2
+## Progress Check
 
 I have made my Date class robust. It now only accepts valid dates (i.e. month and day are valid)
 rather than any month or day. If a call tries to construct a date with an invalid month or day, 
@@ -55,7 +55,7 @@ exceptions are:
 - setDay(int day)
 - setDate(int year, int month, int day)
 
-## Phase 4: Task 3
+## Reflections
 
 Reflections:
 
